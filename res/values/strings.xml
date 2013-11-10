@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">"Geominders "</string>
+    <string name="app_name">"Geominders"</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="facebook_app_id">362466417232231</string>
     <string name="title_activity_test">Test</string>
-    <string name="title_activity_places">PlacesActivity</string>
+    <string name="title_activity_places">Geominders</string>
     <string name="add_place">Add</string>
     <string name="title_activity_add_action">AddActionActivity</string>
+    <string name="title_activity_actions">ActionsActivity</string>
 
 </resources>

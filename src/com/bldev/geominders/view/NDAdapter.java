@@ -14,11 +14,14 @@ public class NDAdapter extends BaseAdapter {
 	private Activity mActivity;
 	private int[] icons;
 	private String[] actionsNames;
+	private int textColor;
 
-	public NDAdapter(Activity activity, int[] icons, String[] actionsNames) {
+	public NDAdapter(Activity activity, int[] icons, String[] actionsNames,
+			int color) {
 		this.mActivity = activity;
 		this.icons = icons;
 		this.actionsNames = actionsNames;
+		this.textColor = color;
 	}
 
 	@Override
@@ -71,6 +74,7 @@ public class NDAdapter extends BaseAdapter {
 		public void populateFrom(int icon, String name) {
 			pictureView.setImageResource(icon);
 			userName.setText(name);
+			userName.setTextColor(textColor);
 		}
 
 	}

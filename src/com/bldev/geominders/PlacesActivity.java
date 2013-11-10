@@ -1,6 +1,7 @@
 package com.bldev.geominders;
 
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +24,7 @@ public class PlacesActivity extends FragmentActivity {
 	private NDAdapter adapter;
 	private ActionBarDrawerToggle actionBarDrawerToggle;
 	private FragmentManager fragmentManager;
-	private static String titleFragment= "";
+	private static String titleFragment = "";
 	private int[] icons = { R.drawable.profile, R.drawable.friends,
 			R.drawable.favs, R.drawable.settings };
 	private String[] actionsNames = { "Profile", "Friends", "Favs", "Settings" };
@@ -42,6 +41,8 @@ public class PlacesActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_places);
 
+		getActionBar().setBackgroundDrawable(
+				new ColorDrawable(Color.rgb(109, 176, 30)));
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		listView = (ListView) findViewById(R.id.left_drawer);
 
@@ -49,25 +50,26 @@ public class PlacesActivity extends FragmentActivity {
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
-		adapter = new NDAdapter(PlacesActivity.this,icons,actionsNames);
+		adapter = new NDAdapter(PlacesActivity.this, icons, actionsNames,
+				Color.WHITE);
 		listView.setAdapter(adapter);
 
 		actionBarDrawerToggle = new ActionBarDrawerToggle(PlacesActivity.this,
 				drawerLayout, R.drawable.ic_drawer, R.string.action_settings,
 				R.string.app_name) {
-			
+
 			@Override
 			public void onDrawerClosed(View drawerView) {
 				super.onDrawerClosed(drawerView);
 				getActionBar().setTitle(getTitle());
 			}
-			
+
 			@Override
-					public void onDrawerOpened(View drawerView) {
-						super.onDrawerOpened(drawerView);
-						
-						getActionBar().setTitle(titleFragment);
-					}
+			public void onDrawerOpened(View drawerView) {
+				super.onDrawerOpened(drawerView);
+
+				getActionBar().setTitle(titleFragment);
+			}
 
 		};
 
@@ -109,16 +111,7 @@ public class PlacesActivity extends FragmentActivity {
 		if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-		
-		switch (item.getItemId()) {
-		case R.id.add_place:
-			Intent addIntent = new Intent(PlacesActivity.this,AddActionActivity.class);
-				startActivity(addIntent);
-			return true;
 
-		default:
-			break;
-		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -128,15 +121,5 @@ public class PlacesActivity extends FragmentActivity {
 
 		actionBarDrawerToggle.syncState();
 	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.places, menu);
-		return true;
-		
-	}
-	
-	
+
 }

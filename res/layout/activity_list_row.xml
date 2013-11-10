@@ -12,17 +12,18 @@
         android:id="@+id/drawer_activity_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:src="@drawable/com_facebook_button_blue" />
 
     <TextView
         android:id="@+id/drawer_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/drawer_activity_icon"
-        android:layout_marginLeft="52dp"
+        android:layout_alignBottom="@+id/drawer_activity_icon"
+        android:layout_marginLeft="24dp"
         android:layout_toRightOf="@+id/drawer_activity_icon"
         android:text="Large Text"
-        android:textColor="#FFFFFF"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
